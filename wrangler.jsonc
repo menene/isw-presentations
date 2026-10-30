@@ -12,7 +12,7 @@
     {
       "binding": "DB",
       "database_name": "grading-db",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "database_id": "9d82e140-35b4-4cd6-a5dd-d2d483b8beb5",
       "migrations_dir": "migrations"
     }
   ]
