@@ -1,0 +1,29 @@
+{
+  "name": "isw-presentation-grading",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "dev:api": "npm run build && npm run db:local && wrangler dev --local",
+    "build": "vue-tsc --noEmit && tsc -p tsconfig.worker.json --noEmit && vite build",
+    "preview": "npm run dev:api",
+    "test": "vitest run",
+    "db:local": "wrangler d1 migrations apply grading-db --local",
+    "db:remote": "wrangler d1 migrations apply grading-db --remote",
+    "db:export-local": "wrangler d1 export grading-db --local --table evaluations --no-schema --output=.wrangler/local-evaluations.sql",
+    "deploy": "npm run build && npm run db:remote && wrangler deploy"
+  },
+  "dependencies": {
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260702.1",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "typescript": "^5.9.0",
+    "vite": "^6.0.0",
+    "vitest": "^3.2.0",
+    "vue-tsc": "^3.1.0",
+    "wrangler": "^4.0.0"
+  }
+}
